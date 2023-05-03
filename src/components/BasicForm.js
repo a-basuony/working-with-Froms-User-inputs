@@ -46,17 +46,19 @@ const BasicForm = (props) => {
     setEmailIsTouched(true);
   };
 
+  let formIsValid = false;
+
+  if (firstNameInputIsValid && lastNameInputIsValid && emailInputIsValid) {
+    formIsValid = true;
+  }
+
   const submissionHandler = (event) => {
     event.preventDefault();
     setFirstIsTouched(true);
     setLastIsTouched(true);
     setEmailIsTouched(true);
 
-    if (
-      firstNameInputIsInvalid &&
-      lastNameInputIsInvalid &&
-      emailInputIsInvalid
-    ) {
+    if (!firstNameInputIsValid && !lastNameInputIsValid && !emailInputIsValid) {
       return;
     }
 
@@ -128,7 +130,7 @@ const BasicForm = (props) => {
         )}
       </div>
       <div className="form-actions">
-        <button>Submit</button>
+        <button disabled={!formIsValid}>Submit</button>
       </div>
     </form>
   );
