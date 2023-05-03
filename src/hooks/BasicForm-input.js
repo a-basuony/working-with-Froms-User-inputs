@@ -15,12 +15,17 @@ export default function useInputForm(validateValue) {
     setIsTouched(true);
   };
 
+  const reset = () => {
+    setEnteredValue("");
+    setIsTouched(false);
+  };
+
   return {
     value: enteredValue,
     isValid: InputIsValid,
     InputIsInvalid,
-    isTouched: isTouched,
     inputValueChangeHandler,
     InputBlurHandler,
+    reset,
   };
 }
