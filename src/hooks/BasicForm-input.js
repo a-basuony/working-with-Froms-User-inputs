@@ -1,27 +1,50 @@
-import React, { useState } from "react";
+import React, { useState, useReducer } from "react";
+
+const initialState = {
+  value: "",
+  isTouched: false,
+};
+
+const inputStateReducer = (state, action) => {
+  if (action.type === "INPUT") {
+    return { value: action.value, isTouched: state.isTouched };
+  }
+  if (action.type === "BLUR") {
+    return { value: state.value, isTouched: true };
+  }
+  if (action.type === "RESET") {
+    return { value: "", isTouched: false };
+  }
+  return inputStateReducer;
+};
 
 export default function useInputForm(validateValue) {
-  const [enteredValue, setEnteredValue] = useState("");
-  const [isTouched, setIsTouched] = useState(false);
+  const [inputState, dispatch] = useReducer(inputStateReducer, initialState);
 
-  const InputIsValid = validateValue(enteredValue);
-  const InputIsInvalid = !InputIsValid && isTouched;
+  // const [enteredValue, setEnteredValue] = useState("");
+  // const [isTouched, setIsTouched] = useState(false);
+
+  const InputIsValid = validateValue(inputState.value);
+  const InputIsInvalid = !InputIsValid && inputState.isTouched;
 
   const inputValueChangeHandler = (event) => {
-    setEnteredValue(event.target.value);
+    // setEnteredValue(event.target.value )
+    dispatch({ type: "INPUT", value: event.target.value });
   };
 
   const InputBlurHandler = (event) => {
-    setIsTouched(true);
+    // setIsTouched(true )
+    dispatch({ type: "BLUR" });
   };
 
   const reset = () => {
-    setEnteredValue("");
-    setIsTouched(false);
+    // setEnteredValue('')
+
+    dispatch({ type: "RESET" });
   };
 
   return {
-    value: enteredValue,
+    value: inputState.value,
     isValid: InputIsValid,
     InputIsInvalid,
     inputValueChangeHandler,

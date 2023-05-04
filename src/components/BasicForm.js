@@ -25,7 +25,7 @@ const BasicForm = (props) => {
   //   setFirstIsTouched(true);
   // };
 
-  // ---------last name inputd
+  // ---------last name input
 
   const {
     value: lastNameValue,
