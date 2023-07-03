@@ -39,7 +39,6 @@ export default function useInputForm(validateValue) {
 
   const reset = () => {
     // setEnteredValue('')
-
     dispatch({ type: "RESET" });
   };
 

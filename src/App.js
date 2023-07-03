@@ -1,14 +1,16 @@
-// import SimpleInput from "./components/SimpleInput";
+import SimpleInput from "./components/SimpleInput";
 import BasicForm from "./components/BasicForm";
 
 function App() {
   return (
     <div className="app">
-      {/* <SimpleInput />
+      <SimpleInput />
+      {/* using use-input hook , it takes useState to handle input validation */}
       <br />
       <hr />
-      <br /> */}
+      <br />
       <BasicForm />
+      {/* using BasicForm-input hook , it takes useReducer to handle input validation  */}
     </div>
   );
 }
