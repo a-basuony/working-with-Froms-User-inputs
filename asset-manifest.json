@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/working-with-Froms-User-inputs/static/css/main.50259da7.css",
+    "main.js": "/working-with-Froms-User-inputs/static/js/main.d572138f.js",
+    "index.html": "/working-with-Froms-User-inputs/index.html",
+    "main.50259da7.css.map": "/working-with-Froms-User-inputs/static/css/main.50259da7.css.map",
+    "main.d572138f.js.map": "/working-with-Froms-User-inputs/static/js/main.d572138f.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.50259da7.css",
+    "static/js/main.d572138f.js"
+  ]
+}
